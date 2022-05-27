@@ -1,4 +1,5 @@
 import requests
+import pwinput
 
 #https://github.com/danielmiessler/SecLists
 SECLIST_GIT = "https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Leaked-Databases/"
@@ -27,6 +28,7 @@ for each in list_of_leaked_databases:
 print(f'[Password Checker] Compiled password set')
 
 while True:
-    enter_password = input("⎯"*30+"\nEnter the password to check\n> ")
-    if enter_password.lower() in set_of_passwords:
+    print("\n"+"="*30)
+    _password = pwinput.pwinput(prompt = "Enter the password to check\n> ", mask = '*')
+    if _password.lower() in set_of_passwords:
         print("[Password Checker] The password entered was found in a leaked password database.\nWe recommend changing your password.")
